@@ -1,14 +1,16 @@
-import javax.swing.*;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args)
     {
+        Scanner in = new Scanner(System.in);
         boolean work = true;
         while (work)
         {
             double value1 = 0;
             double value2 = 0;
-            String expression = JOptionPane.showInputDialog(null, "Введите выражение:");
+            System.out.println("Введите выражение:");
+            String expression = in.nextLine();
             String[] partsOfTheExpression = expression.split(" ");
             try
             {
@@ -16,7 +18,7 @@ public class Main {
                 value2 = Double.parseDouble(partsOfTheExpression[2]);
             }catch (NumberFormatException  e)
             {
-                JOptionPane.showMessageDialog(null, "Ошибка ввода!!!");
+                System.out.println("Ошибка ввода!!!");
                 work = false;
             }
             if (work)
@@ -24,25 +26,26 @@ public class Main {
                 switch (partsOfTheExpression[1])
                 {
                     case "+":
-                        JOptionPane.showMessageDialog(null, "Результат:\n" + value1 + " + " + value2 + " = " + (value1 + value2));
+                        System.out.println("Результат:\n" + value1 + " + " + value2 + " = " + (value1 + value2));
                         break;
                     case "-":
-                        JOptionPane.showMessageDialog(null, "Результат:\n" + value1 + " - " + value2 + " = " + (value1 - value2));
+                        System.out.println("Результат:\n" + value1 + " - " + value2 + " = " + (value1 - value2));
                         break;
                     case "*":
-                        JOptionPane.showMessageDialog(null, "Результат:\n" + value1 + " * " + value2 + " = " + (value1 * value2));
+                        System.out.println("Результат:\n" + value1 + " * " + value2 + " = " + (value1 * value2));
                         break;
                     case "/":
                         if (value2 != 0)
-                            JOptionPane.showMessageDialog(null, "Результат:\n" + value1 + " / " + value2 + " = " + (value1 / value2));
+                            System.out.println("Результат:\n" + value1 + " / " + value2 + " = " + (value1 / value2));
                         else
-                            JOptionPane.showMessageDialog(null, "Делить на ноль плохо!!!");
+                            System.out.println("Делить на ноль плохо!!!");
                         break;
                     default:
-                        JOptionPane.showMessageDialog(null, "Неверный знак операции!!!");
+                        System.out.println("Неверный знак операции!!!");
                         break;
                 }
             }
         }
+        in.close();
     }
 }
